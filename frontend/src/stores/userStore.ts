@@ -1,18 +1,21 @@
 import { defineStore } from "pinia"
 
-// 定义一个store并取名为useStore
+// 定义一个store并取名为userStore
 // defineStore第一个参数是应用程序中store的唯一标识，也就是在定义其他store时该标识不能相同
-// 此处可以类比为java中的实体类，useStore就是类名，state里的属性是成员属性，getters里的函数是getter方法，actions里的函数是setter方法
-export const useStore = defineStore("useStore", {
+// 此处可以类比为java中的实体类，userStore就是类名，state里的属性是成员属性，getters里的函数是getter方法，actions里的函数是setter方法
+export const userStore = defineStore("userStore", {
     // 定义state
     // 推荐使用 完整类型推断的箭头函数
     state: () => {
         return {
             // 所有这些属性都将自动推断其类型
             count: 0,
-            userid: 0,
-            name: "test",
-            isAdmin: true,
+            userid: 1,
+            avatar:"https://avatars.githubusercontent.com/u/6326231?v=4",
+            token: '',
+            username: '',
+            nickname: 'JetLong',
+            refreshToken:'',
         };
     },
 
@@ -31,8 +34,17 @@ export const useStore = defineStore("useStore", {
 
     // 定义actions,里面定义一些对state的赋值操作
     actions: {
+        isLogin() {
+            return this.userid && this.token
+        },
         setCounter(count: number) {
             this.count = count
-        }
+        },
+        setToken(token: string, type: 'token' | 'refreshToken') {
+            this[type] = token
+        },
+        getToken(type: 'auth' | 'refresh' = 'auth') {
+            return type === 'auth' ? this.token : this.refreshToken
+        },
     }
 })
