@@ -1,3 +1,9 @@
 build/bin
 node_modules
 frontend/dist
+frontend/auto-imports.d.ts
+frontend/components.d.ts
+frontend/package.json.md5
+frontend/package-lock.json
+frontend/wailsjs
+go.sum

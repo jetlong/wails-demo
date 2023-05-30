@@ -6,10 +6,6 @@ export function Greet(arg1) {
   return window['go']['main']['App']['Greet'](arg1);
 }
 
-export function SetTitle(arg1) {
-  return window['go']['main']['App']['SetTitle'](arg1);
-}
-
-export function ShowDialog(arg1) {
-  return window['go']['main']['App']['ShowDialog'](arg1);
+export function ShowDialog(arg1, arg2) {
+  return window['go']['main']['App']['ShowDialog'](arg1, arg2);
 }
